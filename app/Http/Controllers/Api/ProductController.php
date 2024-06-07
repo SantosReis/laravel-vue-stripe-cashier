@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -12,7 +11,7 @@ class ProductController extends Controller
     {
         // return Product::all();
         // return Product::with(['categories:id,name'])->get();
-        return Product::with(['categories' => function($query) {
+        return Product::with(['categories' => function ($query) {
             $query->select('id', 'name');
         }])->get();
     }
